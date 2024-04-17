@@ -9,10 +9,8 @@ def open_and_read_file(file_path):
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
-
-    # your code goes here
-
-    return 'Contents of your file as one long string'
+    return open(file_path).read()
+    #return 'Contents of your file as one long string'
 
 
 def make_chains(text_string):
@@ -23,7 +21,6 @@ def make_chains(text_string):
     words in the input text.
 
     For example:
-
         >>> chains = make_chains('hi there mary hi there juanita')
 
     Each bigram (except the last) will be a key in chains:
@@ -41,11 +38,16 @@ def make_chains(text_string):
     """
 
     chains = {}
-
-    # your code goes here
-
+    word = text_string.split()
+    for i in range(len(word) - 2):
+        word_tuple = (word[i], word[i + 1])
+        if word_tuple not in chains:
+            chains[word_tuple] = []
+            #word[i+2] == 'Would'
+            #{('a', 'fox?'): []}
+            #{('a', 'fox?'): ['Would']}
+        chains[word_tuple].append(word[i + 2])
     return chains
-
 
 def make_text(chains):
     """Return text from chains."""
