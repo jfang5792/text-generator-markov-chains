@@ -63,6 +63,9 @@ def make_text(chains):
     words = [key[0], key[1]] #current output: {dict[key], rand_word} || {('a', 'fox?'): []}
     word = choice(chains[key]) #{('a', 'fox?'): ['Random']} >> pick random word from chains[key]
 
+    #begin on a capital letter and end only at an instance of sentence punctuation
+    while key[0][0].isupper():
+        key = choice(key)
     # while chains.get(key):
     #     try:
     #         word = choice(chains[key])
